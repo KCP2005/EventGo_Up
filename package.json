@@ -1,0 +1,31 @@
+{
+  "name": "eventgo",
+  "version": "1.0.0",
+  "description": "Blockchain NFT Ticketing Platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "node eventGo/backend/server.js",
+    "server": "nodemon eventGo/backend/server.js",
+    "client": "npm start --prefix eventGo/frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && npm install --prefix eventGo/backend && npm install --prefix eventGo/frontend",
+    "build": "npm run build --prefix eventGo/frontend"
+  },
+  "keywords": [
+    "blockchain",
+    "nft",
+    "ticketing",
+    "events",
+    "web3",
+    "ethereum"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "concurrent": "^0.3.2"
+  }
+}

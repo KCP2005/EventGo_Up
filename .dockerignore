@@ -1,0 +1,36 @@
+# Dependencies
+node_modules
+eventGo/*/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build directories
+eventGo/frontend/build
+eventGo/frontend/dist
+
+# Version control
+.git
+.gitignore
+
+# Docker files
+Dockerfile
+docker-compose.yml
+
+# IDE files
+.idea
+.vscode
+
+# OS files
+.DS_Store 

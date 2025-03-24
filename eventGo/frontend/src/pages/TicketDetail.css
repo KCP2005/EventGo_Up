@@ -1,0 +1,291 @@
+.ticket-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.ticket-header h1 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 2rem;
+}
+
+.back-btn {
+  padding: 0.75rem 1.5rem;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.back-btn:hover {
+  background: #3182ce;
+}
+
+.ticket-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-info h2 {
+  margin: 0 0 1.5rem 0;
+  color: #2d3748;
+  font-size: 1.5rem;
+}
+
+.ticket-meta {
+  display: grid;
+  gap: 1rem;
+}
+
+.ticket-meta p {
+  margin: 0;
+  color: #4a5568;
+}
+
+.ticket-meta strong {
+  color: #2d3748;
+  margin-right: 0.5rem;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status.valid {
+  background: #c6f6d5;
+  color: #2f855a;
+}
+
+.status.used {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.status.expired {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+.ticket-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: #f7fafc;
+  border-radius: 0.5rem;
+}
+
+.qr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.qr-header h3 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 1.25rem;
+}
+
+.toggle-qr-btn {
+  padding: 0.5rem 1rem;
+  background: #edf2f7;
+  color: #4a5568;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.toggle-qr-btn:hover {
+  background: #e2e8f0;
+}
+
+.qr-container {
+  position: relative;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.qr-container:hover {
+  transform: translateY(-2px);
+}
+
+.qr-overlay {
+  position: relative;
+  z-index: 1;
+}
+
+.qr-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #4299e1;
+  border-radius: 0.5rem;
+  animation: borderPulse 2s infinite;
+}
+
+@keyframes borderPulse {
+  0% {
+    border-color: #4299e1;
+  }
+  50% {
+    border-color: #48bb78;
+  }
+  100% {
+    border-color: #4299e1;
+  }
+}
+
+.qr-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.download-qr-btn, .share-qr-btn {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.download-qr-btn {
+  background: #48bb78;
+  color: white;
+}
+
+.download-qr-btn:hover {
+  background: #38a169;
+}
+
+.share-qr-btn {
+  background: #4299e1;
+  color: white;
+}
+
+.share-qr-btn:hover {
+  background: #3182ce;
+}
+
+.qr-info {
+  text-align: center;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 0.5rem;
+}
+
+.qr-instructions {
+  margin: 0 0 1rem 0;
+  color: #4a5568;
+  font-size: 0.875rem;
+}
+
+.qr-security {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.qr-security p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.25rem;
+  color: #4a5568;
+}
+
+.error {
+  color: #e53e3e;
+}
+
+@media print {
+  .ticket-header,
+  .qr-actions,
+  .qr-security {
+    display: none;
+  }
+
+  .ticket-detail {
+    padding: 0;
+  }
+
+  .ticket-content {
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .qr-container {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .ticket-detail {
+    padding: 1rem;
+  }
+
+  .ticket-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .ticket-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .ticket-qr {
+    padding: 1rem;
+  }
+
+  .qr-actions {
+    flex-direction: column;
+  }
+
+  .qr-security {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+} 
