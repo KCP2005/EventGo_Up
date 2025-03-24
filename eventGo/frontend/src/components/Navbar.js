@@ -72,10 +72,18 @@ const Navbar = () => {
           </Link>
 
           {user ? (
-            <div className="wallet-address">
-              <span>Connected:</span>
-              {`${user.walletAddress.slice(0, 6)}...${user.walletAddress.slice(-4)}`}
-            </div>
+            <>
+              <div className="wallet-address">
+                <span>Connected:</span>
+                {`${user.walletAddress.slice(0, 6)}...${user.walletAddress.slice(-4)}`}
+              </div>
+              <button
+                className="disconnect-wallet-btn"
+                onClick={disconnectWallet}
+              >
+                Disconnect
+              </button>
+            </>
           ) : (
             <button
               className="wallet-button"
@@ -91,4 +99,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

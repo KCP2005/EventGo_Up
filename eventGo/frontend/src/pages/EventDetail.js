@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext'; // Add this import
 import './EventDetail.css';
 
 const EventDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth(); // Add this line to get the user from context
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,12 +15,13 @@ const EventDetail = () => {
   const [purchaseProcessing, setPurchaseProcessing] = useState(false);
 
   useEffect(() => {
-    const fetchEvent = () => {
+    const fetchEvent = async () => {
       try {
         const events = JSON.parse(localStorage.getItem('events') || '[]');
         console.log('Fetched events:', events);
         console.log('Looking for event with ID:', id);
-        const foundEvent = events.find(e => e.id === id);
+        // Convert both IDs to strings for comparison
+        const foundEvent = events.find(e => String(e.id) === String(id));
         console.log('Found event:', foundEvent);
         
         if (foundEvent) {
@@ -51,11 +54,23 @@ const EventDetail = () => {
   const handleConfirmPurchase = async () => {
     setPurchaseProcessing(true);
     try {
-      // Get current user from localStorage
-      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      if (!currentUser) {
-        throw new Error('Please login to purchase tickets');
+      // Check for connected wallet with improved detection
+      const connectedWallet = localStorage.getItem('walletAddress') || localStorage.getItem('connectedWallet');
+      
+      // Log the wallet status for debugging
+      console.log('Wallet connection status:', { 
+        walletAddress: localStorage.getItem('walletAddress'),
+        connectedWallet: localStorage.getItem('connectedWallet'),
+        userWallet: user?.walletAddress // Add this line to check user context
+      });
+      
+      // Check if wallet is connected from the auth context
+      if (!connectedWallet && !user?.walletAddress) {
+        throw new Error('Please connect your wallet to purchase tickets');
       }
+      
+      // Use the wallet address from either localStorage or user context
+      const buyerWalletAddress = connectedWallet || user?.walletAddress;
 
       // Get current events and tickets
       const events = JSON.parse(localStorage.getItem('events') || '[]');
@@ -72,11 +87,11 @@ const EventDetail = () => {
         return e;
       });
 
-      // Create new ticket
+      // Create new ticket with wallet address
       const newTicket = {
         id: `ticket-${Date.now()}`,
         eventId: event.id,
-        userId: currentUser.id,
+        walletAddress: buyerWalletAddress,
         eventTitle: event.title,
         eventDate: event.date,
         eventTime: event.time,
@@ -254,4 +269,4 @@ const EventDetail = () => {
   );
 };
 
-export default EventDetail; 
+export default EventDetail;

@@ -13,15 +13,19 @@ router.get('/', async (req, res) => {
 });
 
 // Get single event
+// Check the route handler for getting a single event
 router.get('/:id', async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
+    
     if (!event) {
       return res.status(404).json({ message: 'Event not found' });
     }
+    
     res.json(event);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
   }
 });
 
@@ -58,11 +62,11 @@ router.delete('/:id', async (req, res) => {
     if (!event) {
       return res.status(404).json({ message: 'Event not found' });
     }
-    await event.remove();
+    await Event.deleteOne({ _id: req.params.id });
     res.json({ message: 'Event deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-module.exports = router; 
+module.exports = router;

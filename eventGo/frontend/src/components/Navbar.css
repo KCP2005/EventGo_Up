@@ -141,4 +141,50 @@
     width: 100%;
     justify-content: center;
   }
-} 
+}
+
+
+/* Add this to your existing Navbar.css file */
+
+.disconnect-wallet-btn {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.disconnect-wallet-btn:hover {
+  background-color: #ff7875;
+}
+
+/* Make sure the wallet section is properly displayed */
+.wallet-address {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  color: #4a6cf7;
+  font-weight: 500;
+}
+
+.wallet-address span {
+  margin-right: 5px;
+  color: #666;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .navbar-links.active {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .disconnect-wallet-btn {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}

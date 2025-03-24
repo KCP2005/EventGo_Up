@@ -8,26 +8,26 @@ import EventDetail from './pages/EventDetail';
 import MyTickets from './pages/MyTickets';
 import OrganizerDashboard from './pages/OrganizerDashboard';
 import './App.css';
+import TicketDetail from './pages/TicketDetail';
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <div className="app">
+    <AuthProvider>
+      <Router>
+        <div className="App">
           <Navbar />
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/events" element={<Events />} />
-              <Route path="/events/:id" element={<EventDetail />} />
-              <Route path="/my-tickets" element={<MyTickets />} />
-              <Route path="/organizer" element={<OrganizerDashboard />} />
-            </Routes>
-          </main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/:id" element={<EventDetail />} />
+            <Route path="/my-tickets" element={<MyTickets />} />
+            <Route path="/tickets/:id" element={<TicketDetail />} />
+            <Route path="/organizer" element={<OrganizerDashboard />} />
+          </Routes>
         </div>
-      </AuthProvider>
-    </Router>
+      </Router>
+    </AuthProvider>
   );
 }
 
-export default App; 
+export default App;
