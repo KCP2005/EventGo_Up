@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Added Link import
 import './OrganizerDashboard.css';
 
 const OrganizerDashboard = () => {
@@ -117,17 +117,23 @@ const OrganizerDashboard = () => {
     return <div className="error">{error}</div>;
   }
 
+  // In the dashboard-header section, add the scanner button
   return (
     <div className="organizer-dashboard">
       <div className="dashboard-header">
         <div className="header-content">
           <h1>Organizer Dashboard</h1>
-          <button 
-            className="create-event-btn"
-            onClick={() => setShowCreateEvent(true)}
-          >
-            Create New Event
-          </button>
+          <div className="dashboard-actions">
+            <button 
+              className="create-event-btn"
+              onClick={() => setShowCreateEvent(true)}
+            >
+              Create New Event
+            </button>
+            <Link to="/ticket-scanner" className="scanner-button">
+              <i className="fas fa-qrcode"></i> Scan Tickets
+            </Link>
+          </div>
         </div>
         <div className="dashboard-tabs">
           <button 
@@ -419,4 +425,7 @@ const OrganizerDashboard = () => {
   );
 };
 
-export default OrganizerDashboard; 
+export default OrganizerDashboard;
+
+
+// Remove the floating dashboard-actions div at the end of the file

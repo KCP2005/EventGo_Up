@@ -471,4 +471,33 @@ td {
     width: 95%;
     padding: 1.5rem;
   }
-} 
+}
+
+/* Add this to your existing CSS file */
+.dashboard-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.scanner-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.scanner-button:hover {
+  background-color: #218838;
+}
+
+.scanner-button i {
+  font-size: 1rem;
+}

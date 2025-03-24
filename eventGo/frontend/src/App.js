@@ -9,6 +9,7 @@ import MyTickets from './pages/MyTickets';
 import OrganizerDashboard from './pages/OrganizerDashboard';
 import './App.css';
 import TicketDetail from './pages/TicketDetail';
+import TicketScanner from './pages/TicketScanner';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/my-tickets" element={<MyTickets />} />
             <Route path="/tickets/:id" element={<TicketDetail />} />
             <Route path="/organizer" element={<OrganizerDashboard />} />
+            <Route path="/ticket-scanner" element={<TicketScanner />} />
           </Routes>
         </div>
       </Router>
